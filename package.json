@@ -9,7 +9,9 @@
     "watch": "npx tailwind -i ./assets/tailwind.css -o ./assets/application.css --watch",
     "dev": "npm run start & npm run watch"
   },
-  "keywords": [],
+  "keywords": [
+
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {

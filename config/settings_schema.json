@@ -1,10 +1,10 @@
 [
-    {
-        "name": "theme_info",
-        "theme_name": "test theme",
-        "theme_author": "test author",
-        "theme_version": "0.0.1",
-        "theme_documentation_url": "https://google.com",
-        "theme_support_url": "https://google.com"
-    }
+  {
+    "name": "theme_info",
+    "theme_name": "test theme",
+    "theme_author": "test author",
+    "theme_version": "0.0.1",
+    "theme_documentation_url": "https://google.com",
+    "theme_support_url": "https://google.com"
+  }
 ]

@@ -3,7 +3,7 @@
   {% for block in section.blocks %}
     <button
       class="tablinks"
-      onclick="openTab(event, '{{ block.settings.tab_button | downcase | replace:' ','-' | append:block.id }}')"
+      onclick="openTab(event, '{{ block.settings.tab_button | downcase | replace: ' ', '-' | append: block.id }}')"
     >
       {{ block.settings.tab_button }}
     </button>
@@ -12,8 +12,8 @@
 
 {% for block in section.blocks %}
   <div
-    id="{{ block.settings.tab_button | downcase | replace:' ','-' | append:block.id }}"
-    class="tabcontent {% if forloop.first %} active {%endif%}"
+    id="{{ block.settings.tab_button | downcase | replace: ' ', '-' | append: block.id }}"
+    class="tabcontent {% if forloop.first %} active {% endif %}"
   >
     {{ block.settings.tab_description }}
   </div>
