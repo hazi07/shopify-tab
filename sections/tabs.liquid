@@ -1,0 +1,114 @@
+<!-- Tab links -->
+<div class="tab">
+  {% for block in section.blocks %}
+    <button
+      class="tablinks"
+      onclick="openTab(event, '{{ block.settings.tab_button | downcase | replace:' ','-' | append:block.id }}')"
+    >
+      {{ block.settings.tab_button }}
+    </button>
+  {% endfor %}
+</div>
+
+{% for block in section.blocks %}
+  <div
+    id="{{ block.settings.tab_button | downcase | replace:' ','-' | append:block.id }}"
+    class="tabcontent {% if forloop.first %} active {%endif%}"
+  >
+    {{ block.settings.tab_description }}
+  </div>
+{% endfor %}
+
+<style>
+  /* Style the tab */
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+</style>
+
+<script>
+  function openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName('tabcontent');
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = 'none';
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName('tablinks');
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(' active', '');
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = 'block';
+    evt.currentTarget.className += ' active';
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Tabs",
+  "max_blocks": 3,
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_button",
+          "label": "Tab Button",
+          "default": "Spring Girls"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_description",
+          "label": "Tab description",
+          "default": "<p>Having a snappy website is becoming increasingly important for eCommerce stores. In this course we use all the latest technologies to bring a modern shopping experience to the customer.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabs"
+    }
+  ]
+}
+{% endschema %}
